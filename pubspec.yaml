@@ -2,6 +2,11 @@ name: remote_request
 description: "A flutter package to request remote network calls i.e, Create , Read , Update , Delete, Patch, Put"
 version: 0.0.1
 homepage: https://github.com/GitFromGeeks/remote_request.git
+repository: "https://github.com/GitFromGeeks/remote_request/tree/main/lib"
+issue_tracker: "https://github.com/GitFromGeeks/remote_request"
+documentation: "https://github.com/GitFromGeeks/remote_request/tree/main/lib"
+
+
 
 environment:
   sdk: '>=3.4.0 <4.0.0'

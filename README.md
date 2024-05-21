@@ -1,39 +1,49 @@
-<!--
-This README describes the package. If you publish this package to pub.dev,
-this README's contents appear on the landing page for your package.
 
-For information about how to write a good package README, see the guide for
-[writing package pages](https://dart.dev/guides/libraries/writing-package-pages).
-
-For general information about developing packages, see the Dart guide for
-[creating packages](https://dart.dev/guides/libraries/create-library-packages)
-and the Flutter guide for
-[developing packages and plugins](https://flutter.dev/developing-packages).
--->
-
-TODO: Put a short description of the package here that helps potential users
-know whether this package might be useful for them.
+A flutter package for remote network request
 
 ## Features
 
-TODO: List what your package can do. Maybe include images, gifs, or videos.
+Remote Network Request  will response from API with any operation i,e CRUD
+    1.Create,
+    2.Read,
+    3.Update,
+    4.Delete,
+    5.Put,
+    6.Patch
+
+In future about to add few more operations that will allow calling the APIs also the fromMap or toMap conversion in it.
 
 ## Getting started
 
-TODO: List prerequisites and provide or point to information on how to
-start using the package.
+Just need to call Request Class to having CRUD operation
 
 ## Usage
 
-TODO: Include short and useful examples for package users. Add longer examples
-to `/example` folder.
+Request Class all all the features required, 
+But ** Do not forget to initialize the BaseURL and Auth token the interceptors
+
+You can through exceptions also 
 
 ```dart
-const like = 'sample';
+var response = await Request.get(
+          "ENDPOINT/get/");
+try{
+if (response != null && response.statusCode == 200) {
+        if (jsonData["status"] == 200) {
+          for (var temp in jsonData["data"]) {
+            log("Case : $temp");
+            cases.add(CaseModel.fromMap(temp));
+          }
+        } else {
+          throw await Request.throwExceptionFromStatusCode(jsonData["status"]);
+        }
+      }
+} on DioException catch (e) {
+      log(e.toString());
+      throw await Request.throwException(e);
+    }
 ```
 
 ## Additional information
 
-TODO: Tell users more about the package: where to find more information, how to
-contribute to the package, how to file issues, what response they can expect
-from the package authors, and more.
+This package under the hood uses Dio and Dio interceptor to call APIs
