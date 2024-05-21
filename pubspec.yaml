@@ -1,5 +1,5 @@
 name: remote_request
-description: "A new Flutter package project."
+description: "A flutter package to request remote network calls i.e, Create , Read , Update , Delete, Patch, Put"
 version: 0.0.1
 homepage: https://github.com/GitFromGeeks/remote_request.git
 
