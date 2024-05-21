@@ -13,6 +13,8 @@ class Request {
     'Content-Type': 'application/json',
   }));
 
+  static Map<String, dynamic> dioHeader = {};
+
   static final Dio _dio = Dio(
     BaseOptions(
       baseUrl: "",
@@ -27,17 +29,11 @@ class Request {
       CustomInterceptor(),
     );
 
-  static void updateBaseUrl(String? baseUrl) async {
-    _dio.options.baseUrl = baseUrl ?? "";
-  }
+  static void setBaseUrl({required String baseUrl}) =>
+      _dio.options.baseUrl = baseUrl;
 
-  static Map<String, dynamic> dioHeader = {};
-
-  static void initialize(
-      {required String baseUrl, required Map<String, dynamic> header}) {
-    _dio.options.baseUrl = baseUrl;
-    dioHeader = header;
-  }
+  static void setHeader({required Map<String, dynamic> header}) =>
+      dioHeader = header;
 
   // ------------------------------- GET -------------------------------  ||
   static Future<Response?> get(
